@@ -1,0 +1,224 @@
+{
+  "id": "audit-1760820281915-6ca2z0cgp",
+  "timestamp": "2025-10-18T20:44:41.915Z",
+  "contractName": "VulnerableBank",
+  "sourceCode": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/**\n * Vulnerable Contract: Reentrancy Attack\n * This contract is intentionally vulnerable for testing purposes\n */\ncontract VulnerableBank {\n    mapping(address => uint256) public balances;\n\n    function deposit() public payable {\n        balances[msg.sender] += msg.value;\n    }\n\n    // VULNERABLE: External call before state update\n    function withdraw() public {\n        uint256 balance = balances[msg.sender];\n        require(balance > 0, \"Insufficient balance\");\n\n        // Vulnerable to reentrancy - state changed after external call\n        (bool success, ) = msg.sender.call{value: balance}(\"\");\n        require(success, \"Transfer failed\");\n\n        balances[msg.sender] = 0; // State update AFTER external call\n    }\n\n    function getBalance() public view returns (uint256) {\n        return balances[msg.sender];\n    }\n}\n",
+  "executiveSummary": {
+    "totalVulnerabilities": 9,
+    "criticalCount": 0,
+    "highCount": 3,
+    "mediumCount": 1,
+    "lowCount": 2,
+    "infoCount": 3,
+    "overallRiskScore": 8.3,
+    "deploymentRecommendation": "DO_NOT_DEPLOY",
+    "topConcerns": [
+      "Potential Integer Overflow/Underflow",
+      "Missing Access Control",
+      "Front-Running Vulnerability"
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "id": "IO-01",
+      "name": "Potential Integer Overflow/Underflow",
+      "severity": "HIGH",
+      "description": "Arithmetic operations may be vulnerable to overflow/underflow",
+      "location": {
+        "file": "contract.sol",
+        "line": 1,
+        "column": 0
+      },
+      "technicalExplanation": "Solidity versions prior to 0.8.0 do not automatically check for integer overflow and underflow. Unchecked arithmetic can wrap around, leading to unexpected behavior.",
+      "exploitScenario": "An attacker could manipulate arithmetic operations to overflow/underflow values, potentially bypassing balance checks or manipulating token supplies.",
+      "recommendation": "Upgrade to Solidity 0.8.0+ which has built-in overflow/underflow checking, or use SafeMath library for older versions.",
+      "codeSnippet": "// Vulnerable (Solidity < 0.8.0):\nuint256 balance = 0;\nbalance = balance - 1; // underflows to max uint256\n\n// Fixed (Solidity >= 0.8.0):\n// Automatically reverts on overflow/underflow\n\n// Or use SafeMath:\nusing SafeMath for uint256;\nbalance = balance.sub(1); // safely reverts",
+      "references": [
+        "SWC-101: Integer Overflow and Underflow",
+        "CWE-190: Integer Overflow",
+        "CWE-191: Integer Underflow"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "AC-01",
+      "name": "Missing Access Control",
+      "severity": "HIGH",
+      "description": "Critical function \"withdraw\" is public without access control",
+      "location": {
+        "file": "contract.sol",
+        "line": 16,
+        "column": 4,
+        "functionName": "withdraw"
+      },
+      "technicalExplanation": "Functions that modify critical contract state or handle funds should be restricted to authorized addresses only.",
+      "exploitScenario": "Any user can call withdraw() and perform privileged operations, potentially draining funds or taking over the contract.",
+      "recommendation": "Add access control modifier such as \"onlyOwner\" or implement role-based access control.",
+      "codeSnippet": "// Vulnerable:\nfunction withdraw() public {\n  // critical operation\n}\n\n// Fixed:\nfunction withdraw() public onlyOwner {\n  // critical operation\n}",
+      "references": [
+        "SWC-105: Unprotected Ether Withdrawal",
+        "CWE-284: Improper Access Control"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "FR-01",
+      "name": "Front-Running Vulnerability",
+      "severity": "HIGH",
+      "description": "Price or state changes visible before execution can be front-run",
+      "location": {
+        "file": "contract.sol",
+        "line": 11,
+        "column": 4
+      },
+      "technicalExplanation": "Detected usage of function deposit() public payable",
+      "exploitScenario": "See references for potential exploits",
+      "recommendation": "Use commit-reveal scheme for sensitive operations",
+      "codeSnippet": "    mapping(address => uint256) public balances;\n\n    function deposit() public payable {\n        balances[msg.sender] += msg.value;\n    }",
+      "references": [
+        "Front-Running",
+        "MEV"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "id": "FP-01",
+      "name": "Floating Pragma",
+      "severity": "MEDIUM",
+      "description": "Pragma version not locked to specific compiler version",
+      "location": {
+        "file": "contract.sol",
+        "line": 2,
+        "column": 0
+      },
+      "technicalExplanation": "Detected usage of pragma solidity ^",
+      "exploitScenario": "See references for potential exploits",
+      "recommendation": "Lock pragma to specific Solidity version for production contracts",
+      "codeSnippet": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/**",
+      "references": [
+        "SWC-103"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "id": "EM-01",
+      "name": "Missing Event Emission",
+      "severity": "LOW",
+      "description": "Function \"deposit\" modifies state but may not emit events",
+      "location": {
+        "file": "contract.sol",
+        "line": 11,
+        "column": 4,
+        "functionName": "deposit"
+      },
+      "technicalExplanation": "Functions that modify state should emit events for off-chain tracking and transparency.",
+      "exploitScenario": "State changes without events make it difficult to track contract behavior and audit trails.",
+      "recommendation": "Add event emission for all significant state changes.",
+      "codeSnippet": "event Deposit(...);",
+      "references": [
+        "Best Practice"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "id": "EM-01",
+      "name": "Missing Event Emission",
+      "severity": "LOW",
+      "description": "Function \"withdraw\" modifies state but may not emit events",
+      "location": {
+        "file": "contract.sol",
+        "line": 16,
+        "column": 4,
+        "functionName": "withdraw"
+      },
+      "technicalExplanation": "Functions that modify state should emit events for off-chain tracking and transparency.",
+      "exploitScenario": "State changes without events make it difficult to track contract behavior and audit trails.",
+      "recommendation": "Add event emission for all significant state changes.",
+      "codeSnippet": "event Withdraw(...);",
+      "references": [
+        "Best Practice"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "id": "PE-01",
+      "name": "Public Function Could Be External",
+      "severity": "INFO",
+      "description": "Function \"deposit\" is public but could be external",
+      "location": {
+        "file": "contract.sol",
+        "line": 11,
+        "column": 4,
+        "functionName": "deposit"
+      },
+      "technicalExplanation": "Functions that are not called internally can be marked as external instead of public, saving gas.",
+      "exploitScenario": "Not a security issue, but wastes gas unnecessarily.",
+      "recommendation": "Change visibility from public to external if the function is not called internally.",
+      "codeSnippet": "// Before:\nfunction deposit() public { }\n\n// After:\nfunction deposit() external { }",
+      "references": [
+        "Gas Optimization"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "id": "PE-01",
+      "name": "Public Function Could Be External",
+      "severity": "INFO",
+      "description": "Function \"withdraw\" is public but could be external",
+      "location": {
+        "file": "contract.sol",
+        "line": 16,
+        "column": 4,
+        "functionName": "withdraw"
+      },
+      "technicalExplanation": "Functions that are not called internally can be marked as external instead of public, saving gas.",
+      "exploitScenario": "Not a security issue, but wastes gas unnecessarily.",
+      "recommendation": "Change visibility from public to external if the function is not called internally.",
+      "codeSnippet": "// Before:\nfunction withdraw() public { }\n\n// After:\nfunction withdraw() external { }",
+      "references": [
+        "Gas Optimization"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "id": "PE-01",
+      "name": "Public Function Could Be External",
+      "severity": "INFO",
+      "description": "Function \"getBalance\" is public but could be external",
+      "location": {
+        "file": "contract.sol",
+        "line": 27,
+        "column": 4,
+        "functionName": "getBalance"
+      },
+      "technicalExplanation": "Functions that are not called internally can be marked as external instead of public, saving gas.",
+      "exploitScenario": "Not a security issue, but wastes gas unnecessarily.",
+      "recommendation": "Change visibility from public to external if the function is not called internally.",
+      "codeSnippet": "// Before:\nfunction getBalance() public { }\n\n// After:\nfunction getBalance() external { }",
+      "references": [
+        "Gas Optimization"
+      ],
+      "confidence": 0.5
+    }
+  ],
+  "gasOptimizations": [],
+  "bestPractices": [],
+  "riskAssessment": {
+    "overallScore": 8.3,
+    "categoryBreakdown": {
+      "IO": 1,
+      "AC": 1,
+      "FR": 1,
+      "FP": 1,
+      "EM": 2,
+      "PE": 3
+    },
+    "historicalContext": "AI analysis disabled"
+  },
+  "metadata": {
+    "analysisVersion": "1.0.0",
+    "rulesVersion": "1.0.0",
+    "aiModel": "gpt-4",
+    "analysisTime": 1156
+  }
+}

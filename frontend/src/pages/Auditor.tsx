@@ -14,7 +14,6 @@ contract VulnerableBank {
         balances[msg.sender] += msg.value;
     }
 
-    // VULNERABLE: Reentrancy attack
     function withdraw() public {
         uint256 balance = balances[msg.sender];
         require(balance > 0, "Insufficient balance");
