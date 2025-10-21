@@ -8,7 +8,10 @@ export interface Vulnerability {
   recommendation: string;
   location: {
     line: number;
+    function?: string;
+    snippet?: string;
   };
+  references?: string[];
 }
 
 export interface ExecutiveSummary {
