@@ -8,7 +8,6 @@ import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
-import { SmartContractAuditorAgent } from '../agents/SmartContractAuditorAgent';
 import { ADKSmartContractAuditorAgent } from '../agents/ADKSmartContractAuditorAgent';
 import { ReportAgent } from '../agents/report/ReportAgent';
 import { logger } from '../utils/logger';
@@ -40,13 +39,11 @@ const rateLimitMiddleware = async (req: any, res: any, next: any) => {
   }
 };
 
-// Initialize auditor agents
-// Use ADK-TS agent by default (for hackathon requirement)
-const useADK = process.env.USE_ADK_AGENT !== 'false';
-const auditor = useADK ? new ADKSmartContractAuditorAgent() : new SmartContractAuditorAgent();
+// Initialize ADK-TS powered auditor agent
+const auditor = new ADKSmartContractAuditorAgent();
 const reportAgent = new ReportAgent();
 
-logger.info(`Using ${useADK ? 'ADK-TS' : 'Standard'} Auditor Agent`);
+logger.info('Using ADK-TS Auditor Agent');
 
 // Health check
 app.get('/api/health', (req: any, res: any) => {

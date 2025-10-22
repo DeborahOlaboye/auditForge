@@ -20,9 +20,8 @@ export default function Landing() {
           <div className="nav-links">
             <a href="#features">Features</a>
             <a href="#how-it-works">How It Works</a>
-            <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
-            <a href="https://github.com/yourusername/smart-contract-auditor" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://github.com/DeborahOlaboye/auditForge" target="_blank" rel="noreferrer">Docs</a>
           </div>
           <Link to="/auditor">
             <button className="btn-primary">Try Free Audit</button>
@@ -391,62 +390,6 @@ export default function Landing() {
           </div>
           <p className="tech-tagline">Powered by ADK-TS Multi-Agent Architecture</p>
           <a href="#" className="text-link">Learn about our architecture →</a>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="pricing-section">
-        <div className="section-container">
-          <div className="section-header">
-            <h2 className="section-heading">Start Forging Secure Contracts Today</h2>
-            <p className="section-subheading">Free for open source projects. No credit card required.</p>
-          </div>
-          <div className="pricing-cards">
-            <div className="pricing-card">
-              <h4 className="pricing-title">Open Source</h4>
-              <div className="pricing-price">$0</div>
-              <p className="pricing-desc">Perfect for individual developers and OSS projects</p>
-              <ul className="pricing-features">
-                <li>✓ Unlimited audits</li>
-                <li>✓ All vulnerability detectors</li>
-                <li>✓ Web interface access</li>
-                <li>✓ GitHub integration</li>
-                <li>✓ Community support</li>
-              </ul>
-              <Link to="/auditor">
-                <button className="btn-secondary btn-block">Start Auditing</button>
-              </Link>
-            </div>
-            <div className="pricing-card featured">
-              <div className="popular-badge">MOST POPULAR</div>
-              <h4 className="pricing-title">Professional</h4>
-              <div className="pricing-price">$49<span className="price-period">/month</span></div>
-              <p className="pricing-desc">For teams and commercial projects</p>
-              <ul className="pricing-features">
-                <li>✓ Everything in Free</li>
-                <li>✓ Priority analysis</li>
-                <li>✓ API access</li>
-                <li>✓ Private audits</li>
-                <li>✓ Priority support</li>
-                <li>✓ Custom rule sets</li>
-              </ul>
-              <button className="btn-primary btn-block btn-large">Get Started</button>
-            </div>
-            <div className="pricing-card">
-              <h4 className="pricing-title">Enterprise</h4>
-              <div className="pricing-price">Custom</div>
-              <p className="pricing-desc">For organizations and DAOs</p>
-              <ul className="pricing-features">
-                <li>✓ Everything in Pro</li>
-                <li>✓ Dedicated support</li>
-                <li>✓ Custom integrations</li>
-                <li>✓ On-premise deployment</li>
-                <li>✓ SLA guarantee</li>
-                <li>✓ Training & onboarding</li>
-              </ul>
-              <button className="btn-secondary btn-block">Contact Sales</button>
-            </div>
-          </div>
         </div>
       </section>
 

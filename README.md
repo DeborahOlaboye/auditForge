@@ -30,6 +30,41 @@ AuditForge provides instant, professional-grade security audits for free:
 
 ---
 
+## Project Structure
+
+AuditForge is organized into two main components:
+
+```
+auditForge/
+├── backend/          # ADK-TS powered API server (Node.js + TypeScript)
+│   ├── src/
+│   │   ├── agents/   # ADK-TS agents for security auditing
+│   │   ├── api/      # Express REST API
+│   │   └── detector/ # Vulnerability detection engine
+│   ├── package.json
+│   └── README.md     # Backend deployment guide
+│
+├── frontend/         # React + TypeScript web interface
+│   ├── src/
+│   │   ├── pages/    # Auditor UI
+│   │   └── services/ # API client
+│   ├── package.json
+│   └── README.md
+│
+├── docs/             # Documentation
+├── examples/         # Sample contracts
+└── README.md         # This file
+```
+
+### Quick Links
+
+- **Backend**: [./backend/README.md](./backend/README.md) - API server deployment
+- **Frontend**: [./frontend/README.md](./frontend/README.md) - Web UI deployment
+- **Live Demo**: https://audit-forge.vercel.app/
+- **API Docs**: [./docs/API.md](./docs/API.md)
+
+---
+
 ## Why AuditForge?
 
 ### For Solo Developers
@@ -224,47 +259,82 @@ AuditForge uses a sophisticated multi-agent architecture powered by ADK-TS:
 - **Error handling**: Robust failure recovery
 
 ---
-### GitHub Integration
 
-#### Setup GitHub App
+## ADK-TS Implementation
 
-1. **Install the GitHub App**
-   - Visit: `https://github.com/apps/auditforge-security`
-   - Click **"Install"**
-   - Select repositories to monitor
-   - Authorize the app
+### What is ADK-TS?
 
-2. **Configure Webhook** (if self-hosting)
-````bash
-   # Set webhook URL in GitHub App settings
-   Webhook URL: https://your-domain.com/api/github-webhook
-   Webhook Secret: <your_secret_from_.env>
-   
-   # Subscribe to events
-   - Pull requests
-   - Push
-````
+**ADK-TS (Agent Development Kit for TypeScript)** is a comprehensive framework for building sophisticated AI agents with multi-LLM support, advanced tools, and flexible conversation flows.
 
-3. **Test Integration**
-   - Create a PR with Solidity changes
-   - AuditForge automatically comments within 30 seconds
-   - Review security findings inline
+### How AuditForge Uses ADK-TS
 
-#### How It Works
-````mermaid
-sequenceDiagram
-    Developer->>GitHub: Create PR with .sol files
-    GitHub->>AuditForge: Webhook: PR opened
-    AuditForge->>GitHub: Fetch changed files
-    AuditForge->>AuditForge: Run security audit
-    AuditForge->>GitHub: Post review comment
-    GitHub->>Developer: Notification
-    Developer->>GitHub: Review findings
-    Developer->>GitHub: Push fixes
-    GitHub->>AuditForge: Webhook: PR updated
-    AuditForge->>AuditForge: Re-audit
-    AuditForge->>GitHub: Update comment
-````
+#### 1. Main Agent Implementation
+
+**File**: `src/agents/ADKSmartContractAuditorAgent.ts`
+
+Our main auditor agent leverages ADK-TS's `AgentBuilder` for AI-powered orchestration:
+
+
+#### 2. Multi-LLM Support via ADK-TS
+
+ADK-TS provides seamless integration with multiple LLM providers:
+
+The agent automatically maps to ADK-TS model identifiers:
+- `openai` + `gpt-4` → `gpt-4-turbo-preview`
+- `anthropic` → `claude-3-5-sonnet-20241022`
+
+#### 3. Agent Orchestration
+
+#### 4. AI-Powered Analysis
+
+ADK-TS enables intelligent security analysis.
+
+### ADK-TS Features We Leverage
+
+1. **AgentBuilder API**
+   - Fluent interface for agent creation
+   - Model selection and configuration
+   - Built-in runner for executing queries
+
+2. **Multi-Provider LLM Support**
+   - OpenAI (GPT-4, GPT-3.5)
+   - Anthropic (Claude 3.5 Sonnet)
+   - Seamless provider switching
+
+3. **Agent Coordination**
+   - State management across sub-agents
+   - Error handling and recovery
+   - Context preservation
+
+4. **Type Safety**
+   - Full TypeScript support
+   - Strong typing for agent responses
+   - IntelliSense support in development
+
+### Project Structure with ADK-TS
+
+```
+src/
+├── agents/
+│   ├── ADKSmartContractAuditorAgent.ts   # ✨ ADK-TS powered main agent
+│   ├── parser/ParserAgent.ts              # Sub-agent: Solidity parsing
+│   └── report/ReportAgent.ts              # Sub-agent: Report generation
+├── analyzer/
+│   └── AIAnalyzer.ts                      # AI analysis with LLM integration
+├── detector/
+│   └── VulnerabilityDetector.ts           # Pattern-based detection (20+ rules)
+└── api/
+    └── server.ts                          # Express API (uses ADK-TS agent)
+```
+
+### Benefits of ADK-TS Integration
+
+✅ **Rapid Development**: Pre-built agent patterns accelerate implementation
+✅ **Multi-LLM Flexibility**: Switch between OpenAI and Anthropic seamlessly
+✅ **Type Safety**: Full TypeScript support with strong typing
+✅ **Production Ready**: Robust error handling and retry logic built-in
+✅ **Scalability**: Stateless agents support horizontal scaling
+✅ **Maintainability**: Clean separation between agent logic and business logic
 
 #### Example PR Comment
 ````markdown
