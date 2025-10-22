@@ -1,383 +1,328 @@
-# Smart Contract Security Auditor Agent
+# AuditForge
 
-> AI-powered smart contract security auditor built with ADK-TS framework
+**Forging Secure Smart Contracts**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
-[![Built with ADK-TS](https://img.shields.io/badge/Built%20with-ADK--TS-purple)](https://adk.iqai.com/)
+AI-powered smart contract security auditor built with ADK-TS. Detects vulnerabilities, prevents exploits, protects your DeFi protocol.
 
-## Project Overview
+[Try Live Demo](https://audit-forge.vercel.app/) | [Documentation](https://github.com/DeborahOlaboye/auditForge)
 
-Smart Contract Security Auditor is an AI-powered agent that automatically analyzes Solidity smart contracts for security vulnerabilities, providing instant professional-grade audits that would normally cost $5,000-$100,000 and take weeks.
+---
 
-### Problem Statement
+## Overview
 
-- **$3+ billion** lost annually to smart contract exploits
-- Manual audits cost **$5K-$100K** per contract
-- Audit process takes **weeks to months**
-- Small projects often **can't afford** professional audits
+AuditForge is an AI-powered smart contract security auditor that analyzes Solidity code for vulnerabilities in seconds. Built with ADK-TS's multi-agent architecture, it brings enterprise-grade security analysis to every blockchain developer—from solo builders to established DeFi protocols.
 
-### Our Solution
+### The Problem
 
-An autonomous AI agent that:
-- Detects **vulnerability types** using pattern matching + LLM analysis
-- Provides **instant results** (analysis in seconds)
-- Offers **professional-grade reports** in multiple formats
-- Integrates seamlessly into **developer workflows** (GitHub, API, Web UI)
-- **100% free** tier for open-source projects
+- **$3+ billion** lost to smart contract exploits in 2024 alone
+- Professional audits cost **$5,000-$100,000** and take **weeks**
+- Small teams and solo developers can't afford professional security reviews
+- Critical vulnerabilities slip into production, putting user funds at risk
 
-## Hackathon Tracks
+### The Solution
 
-### Primary Track: Web3/Blockchain Use Case ($1,000)
+AuditForge provides instant, professional-grade security audits for free:
+- **3-5 second** analysis time
+- **20+ vulnerability types** detected
+- **AI-powered** deep semantic analysis
+- **GitHub integration** for continuous monitoring
+- **$0 cost** for open-source projects
 
-This project directly addresses the most critical Web3 infrastructure problem: **smart contract security**. Every DeFi protocol, DAO, and blockchain application needs security audits before deployment.
+---
 
-**Why this wins:**
-- Solves real $3B+ annual problem in Web3
-- Analyzes blockchain-native Solidity code
-- Prevents catastrophic exploits that damage entire ecosystem
-- Makes Web3 security accessible to all developers
+## Why AuditForge?
 
-### Bonus Track: Best Technical Implementation ($200)
+### For Solo Developers
+> "I can't afford a $50K audit, but I can't deploy without security confidence."
 
-**Technical Excellence:**
-- Multi-agent ADK-TS architecture with coordinating sub-agents
-- Hybrid analysis: Pattern matching + LLM semantic reasoning
-- AST-level code analysis with 13+ custom detection algorithms
-- Production-ready code with comprehensive error handling
-- Extensible plugin architecture for custom rules
+**AuditForge gives you:**
+- Free, instant security analysis
+- Clear explanations in plain English
+- Step-by-step fix recommendations
+- Confidence to deploy safely
 
-### Bonus Track: Most Practical Real-World Use Case ($200)
+### For Development Teams
+> "We need continuous security monitoring integrated into our workflow."
 
-**Immediate Practical Value:**
-- Saves developers $10K-$100K per audit
-- Reduces audit time from weeks to seconds
-- GitHub integration fits existing workflows
-- Zero installation via web interface
-- API enables CI/CD automation
+**AuditForge provides:**
+- Automatic GitHub PR reviews
+- CI/CD pipeline integration via API
+- Team collaboration features
+- Catch issues before production
 
-### Bonus Track: Best Contribution to ADK-TS ($200)
+### For DeFi Protocols
+> "A single vulnerability could drain our entire treasury."
 
-**Framework Showcase:**
-- Demonstrates multi-agent coordination patterns
-- Shows LLM integration best practices
-- Includes ATP (Agent Tokenization Platform) integration concept
-- Provides reusable security tool template
-- Comprehensive documentation for future builders
+**AuditForge protects:**
+- Multi-million dollar treasuries
+- User funds and protocol reputation
+- Against common and novel attack vectors
+- With AI-powered business logic analysis
 
-**Total Prize Potential:** $1,600
+### For Security Firms
+> "We need tools that augment our auditors, not replace them."
+
+**AuditForge enables:**
+- Automated first-pass analysis
+- Focus human expertise on complex logic
+- Faster turnaround times
+- Comprehensive coverage
+
+---
 
 ## Features
 
 ### Core Capabilities
 
-- **20+ Vulnerability Detection Rules**
-  - Reentrancy attacks
-  - Unchecked external calls
-  - Access control issues
-  - Integer overflow/underflow
-  - Delegatecall vulnerabilities
-  - Unprotected selfdestruct
-  - Timestamp dependence
-  - tx.origin authentication
-  - Floating pragma
-  - And more...
+#### Comprehensive Vulnerability Detection
+- **20+ vulnerability patterns** detected automatically
+- **Reentrancy attacks** (The DAO-style exploits)
+- **Integer overflow/underflow** (pre-0.8.0 Solidity)
+- **Access control issues** (unauthorized function calls)
+- **Unchecked return values** (silent failures)
+- **Front-running vulnerabilities** (MEV attacks)
+- **DoS attacks** (block gas limit, unbounded loops)
+- **Timestamp dependence** (weak randomness)
+- **Delegatecall to untrusted addresses**
+- **And 12+ more** critical security issues
 
-- **AI-Powered Deep Analysis**
-  - Validates pattern-detected issues
-  - Discovers business logic flaws
-  - Provides natural language explanations
-  - Suggests specific code fixes
-  - Calculates overall risk scores
+#### AI-Powered Deep Analysis
+- **LLM-driven semantic analysis** using GPT-4/Claude
+- **Business logic flaw detection** beyond pattern matching
+- **Natural language explanations** of vulnerabilities
+- **Exploit scenario walkthroughs** for understanding impact
+- **Contextual fix recommendations** with code examples
+- **False positive validation** by AI reasoning
 
-- **Multiple Integration Methods**
-  - Web Interface (coming soon)
-  - REST API
-  - GitHub PR automation (coming soon)
-  - CLI tool (coming soon)
+#### Lightning Fast
+- **< 5 seconds** average audit time
+- **Real-time feedback** as you code
+- **Instant results** via web interface
+- **Async processing** for large contracts
 
-- **Comprehensive Reports**
-  - Executive summary with risk assessment
-  - Detailed findings with exploit scenarios
-  - Code-level recommendations
-  - Gas optimization suggestions
-  - Multiple export formats (Markdown, JSON, PDF)
+#### GitHub Integration
+- **Automatic PR reviews** for Solidity changes
+- **Inline code comments** with security findings
+- **Status checks** (approve/block based on severity)
+- **Continuous monitoring** of repositories
+- **Team notifications** for critical issues
+
+#### Comprehensive Reports
+- **Executive summaries** for stakeholders
+- **Detailed vulnerability breakdowns** with severity levels
+- **Gas optimization suggestions** for efficiency
+- **AI insights** on architecture and design
+- **Multiple export formats:**
+  - PDF (professional audit report)
+  - JSON (machine-readable, CI/CD integration)
+  - Markdown (GitHub-friendly)
+  - HTML (shareable web view)
+
+#### Developer-Friendly Interface
+- **Monaco Editor** integration (VS Code experience)
+- **Syntax highlighting** for Solidity
+- **Line-by-line vulnerability highlighting**
+- **Interactive code fixes** (copy corrected code)
+- **Dark mode** support
+- **Mobile responsive** design
+
+### Advanced Features
+
+#### Multiple Integration Points
+- **Web Interface**: No installation required
+- **REST API**: Programmatic access for automation
+- **GitHub App**: Install once, continuous monitoring
+- **CLI Tool**: Terminal-based auditing (coming soon)
+
+#### Sample Contracts
+- **Pre-loaded examples** of common vulnerabilities
+- **Educational resource** for learning security
+- **Testing playground** for experimenting
+- **Real-world exploit recreations**
+
+#### Analytics & Insights
+- **Risk scoring** (0-10 scale)
+- **Vulnerability distribution** visualization
+- **Historical tracking** (if authenticated)
+- **Comparison to best practices**
+
+#### Educational Content
+- **CWE/SWC references** for each vulnerability
+- **Links to real-world exploits** (The DAO, etc.)
+- **Security best practices** recommendations
+- **OpenZeppelin library** suggestions
+---
 
 ## Architecture
 
-### Multi-Agent System (ADK-TS)
-
-```
-SmartContractAuditorAgent (Main Orchestrator)
-├── ParserAgent (Solidity → AST)
-├── VulnerabilityDetector (Pattern-based rules)
-├── AIAnalyzer (LLM-powered semantic analysis)
-└── ReportAgent (Report generation & export)
-```
-
-### Component Flow
-
-1. **Parser Sub-Agent**: Converts Solidity to Abstract Syntax Tree
-2. **Vulnerability Detector**: Runs 20+ security rules
-3. **AI Analyzer**: Deep semantic analysis with GPT-4/Claude
-4. **Report Generator**: Synthesizes findings into actionable reports
-
-See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for detailed technical specifications.
-
-## Installation & Setup
-
-### Prerequisites
-
-- Node.js >= 18.0.0
-- npm or yarn
-- OpenAI API key (for AI analysis) or Anthropic API key
-
-### Installation
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/smart-contract-auditor.git
-cd smart-contract-auditor
-
-# Install dependencies
-npm install
-
-# Copy environment template
-cp .env.example .env
-
-# Edit .env and add your API keys
-nano .env
-```
-
-### Environment Variables
-
-```bash
-# Required for AI analysis
-OPENAI_API_KEY=your_openai_api_key_here
-# OR
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
-
-# Server configuration
-PORT=3000
-NODE_ENV=development
-
-# LLM Provider (openai or anthropic)
-LLM_PROVIDER=openai
-LLM_MODEL=gpt-4
-```
-
-### Running the Application
-
-```bash
-# Development mode with hot reload
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Run tests
-npm test
-```
-
-## Usage Examples
-
-### Programmatic Usage
-
-```typescript
-import { SmartContractAuditorAgent } from './src/agents/SmartContractAuditorAgent';
-
-const auditor = new SmartContractAuditorAgent();
-
-const report = await auditor.auditContract(
-  soliditySourceCode,
-  'MyContract',
-  {
-    enableAIAnalysis: true,
-    llmProvider: 'openai'
-  }
-);
-
-console.log(`Found ${report.executiveSummary.totalVulnerabilities} vulnerabilities`);
-console.log(`Risk Score: ${report.executiveSummary.overallRiskScore}/10`);
-
-// Export to Markdown
-const markdown = await auditor.exportMarkdown(report);
-```
-
-### API Usage
-
-```bash
-# Audit a contract
-curl -X POST http://localhost:3000/api/audit \
-  -H "Content-Type: application/json" \
-  -d '{
-    "code": "pragma solidity ^0.8.0; contract Test { ... }",
-    "contractName": "Test",
-    "options": { "enableAIAnalysis": true }
-  }'
-
-# Health check
-curl http://localhost:3000/api/health
-```
-
-See [API.md](docs/API.md) for complete API documentation.
-
-## Built with ADK-TS
-
-This project showcases the power of the ADK-TS framework:
-
-### Multi-Agent Coordination
-
-- **Main Agent**: `SmartContractAuditorAgent` orchestrates the entire workflow
-- **Sub-Agents**: `ParserAgent` and `ReportAgent` handle specialized tasks
-- **Task Decomposition**: Complex audits broken into manageable steps
-- **Context Sharing**: Audit state maintained across agent hierarchy
-
-### LLM Integration
-
-- Abstraction layer supports OpenAI and Anthropic
-- Structured prompt templates for consistent analysis
-- Response parsing and validation
-- Error handling and fallback strategies
-
-### Extensibility
-
-- Plugin system for custom vulnerability rules
-- Configurable analysis options
-- Multiple export format support
-- Integration-ready architecture
-
-**Code Examples:**
-
-```typescript
-// Multi-agent coordination
-const parsedContract = await this.parserAgent.parse(sourceCode);
-const vulnerabilities = await this.vulnerabilityDetector.detect(parsedContract);
-const aiAnalysis = await this.aiAnalyzer.analyze(parsedContract, vulnerabilities);
-const report = await this.reportAgent.generateReport(/* ... */);
-```
-
-## Agent Tokenization (ATP Integration)
-
-### ATP Concept Demonstration
-
-This agent is designed to be tokenized using IQ AI's Agent Tokenization Platform (ATP), enabling:
-
-#### Use Cases
-
-1. **Security Firm Deployment**
-   - Firms tokenize agent instances
-   - Clients purchase audit credits
-   - Revenue sharing between firm and contributors
-
-2. **DAO Continuous Monitoring**
-   - DAOs subscribe to agent services
-   - Automatic audits on every commit
-   - Governance over agent parameters
-
-3. **Developer Marketplace**
-   - Listed on IQ AI marketplace
-   - Pay-per-audit model
-   - Free tier for open-source projects
-
-4. **Community-Driven Development**
-   - Vulnerability rule contributors earn percentage
-   - Pattern database maintainers compensated
-   - Incentivized improvement ecosystem
-
-See [ATP_INTEGRATION.md](docs/ATP_INTEGRATION.md) for detailed tokenization strategy.
-
-## Testing
-
-### Running Tests
-
-```bash
-# Run all tests
-npm test
-
-# Run with coverage
-npm run test:coverage
-
-# Test specific contract
-npm test -- vulnerable-reentrancy
-```
-
-### Test Contracts
-
-- `vulnerable-reentrancy.sol`: Tests reentrancy detection
-- `vulnerable-access-control.sol`: Tests access control detection
-- `safe-contract.sol`: Tests false positive rate
-
-## Real-World Impact
-
-### Cost Comparison
-
-| Service | Cost | Time | Accessibility |
-|---------|------|------|---------------|
-| Traditional Audit | $5K-$100K | 2-4 weeks | Enterprise only |
-| **Our Solution** | **Free-$500** | **< 5 seconds** | **Everyone** |
-
-### Target Users
-
-- Solo developers building first DeFi project
-- Small teams with limited budgets
-- Open-source protocol contributors
-- DAOs governing treasury contracts
-- Audit firms seeking automation tools
-
-## Future Enhancements
-
-- [ ] Web interface with Monaco editor
-- [ ] GitHub App for automatic PR reviews
-- [ ] Support for additional blockchains (Rust/Move)
-- [ ] Historical vulnerability database
-- [ ] Formal verification integration
-- [ ] Multi-file project analysis
-- [ ] Custom rule marketplace
-
-## Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Adding Custom Rules
-
-```typescript
-export const myCustomRule: VulnerabilityRule = {
-  id: 'CR-01',
-  name: 'My Custom Vulnerability',
-  severity: Severity.MEDIUM,
-  description: '...',
-  pattern: (ast, metadata) => {
-    // Detection logic
-    return vulnerabilities;
-  },
-  recommendation: '...',
-  references: ['...']
-};
-```
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details
-
-## Acknowledgments
-
-- Built for [IQ AI ADK-TS Hackathon 2025](https://dorahacks.io/hackathon/adk-ts-bounty)
-- Powered by [ADK-TS Framework](https://adk.iqai.com/)
-- Inspired by [Trail of Bits](https://www.trailofbits.com/) and [OpenZeppelin](https://www.openzeppelin.com/) security research
-
-## Demo & Links
-
-- **Live Demo**: Coming soon
-- **Video Demo**: Coming soon
-- **GitHub**: [github.com/yourusername/smart-contract-auditor](https://github.com/yourusername/smart-contract-auditor)
-- **Documentation**: [Full docs](docs/)
+AuditForge uses a sophisticated multi-agent architecture powered by ADK-TS:
+````
+┌─────────────────────────────────────────────────────────────┐
+│                    User Interface Layer                      │
+│  ┌──────────────┬──────────────┬──────────────┬──────────┐  │
+│  │ Web Interface│  GitHub App  │   REST API   │    CLI   │  │
+│  └──────────────┴──────────────┴──────────────┴──────────┘  │
+└─────────────────────────────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Main Auditor Agent (ADK-TS Core)                │
+│  • Orchestrates audit workflow                               │
+│  • Manages context and state                                 │
+│  • Coordinates sub-agents                                    │
+│  • Handles error recovery                                    │
+└─────────────────────────────────────────────────────────────┘
+            │                  │                  │
+            ▼                  ▼                  ▼
+┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│  Parser Agent    │  │  Analyzer Agent  │  │  Reporter Agent  │
+│                  │  │                  │  │                  │
+│ • AST parsing    │  │ • Vuln detection │  │ • Report gen     │
+│ • Code structure │  │ • AI analysis    │  │ • Multi-format   │
+│ • Metadata       │  │ • Risk scoring   │  │ • Visualization  │
+└──────────────────┘  └──────────────────┘  └──────────────────┘
+            │                  │                  │
+            ▼                  ▼                  ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Utility Layer                             │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  • Solidity Parser (@solidity-parser/parser)         │   │
+│  │  • LLM Integration (OpenAI GPT-4 / Anthropic Claude) │   │
+│  │  • Vulnerability Rule Engine (20+ patterns)          │   │
+│  │  • Report Formatters (PDF, JSON, Markdown, HTML)     │   │
+│  │  • GitHub API Client (@octokit/rest)                 │   │
+│  └──────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+            │
+            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Data Layer                                │
+│  • Audit Results Cache (Redis)                              │
+│  • User Preferences (PostgreSQL - optional)                 │
+│  • Historical Analytics (PostgreSQL - optional)             │
+└─────────────────────────────────────────────────────────────┘
+````
+
+### Key Design Decisions
+
+**Why Multi-Agent?**
+- **Separation of concerns**: Each agent has a focused responsibility
+- **Parallel processing**: Agents can work concurrently
+- **Extensibility**: Easy to add new analysis agents
+- **Maintainability**: Independent agent development and testing
+
+**Why Hybrid Analysis?**
+- **Pattern matching**: Fast, deterministic, catches known issues
+- **AI reasoning**: Catches novel vulnerabilities, validates findings
+- **Best of both worlds**: High recall + low false positives
+
+**Why ADK-TS?**
+- **Agent coordination**: Built-in multi-agent orchestration
+- **Task planning**: Complex workflow management
+- **LLM integration**: Simplified AI model interaction
+- **Context management**: State preservation across agents
+- **Error handling**: Robust failure recovery
+
+---
+### GitHub Integration
+
+#### Setup GitHub App
+
+1. **Install the GitHub App**
+   - Visit: `https://github.com/apps/auditforge-security`
+   - Click **"Install"**
+   - Select repositories to monitor
+   - Authorize the app
+
+2. **Configure Webhook** (if self-hosting)
+````bash
+   # Set webhook URL in GitHub App settings
+   Webhook URL: https://your-domain.com/api/github-webhook
+   Webhook Secret: <your_secret_from_.env>
+   
+   # Subscribe to events
+   - Pull requests
+   - Push
+````
+
+3. **Test Integration**
+   - Create a PR with Solidity changes
+   - AuditForge automatically comments within 30 seconds
+   - Review security findings inline
+
+#### How It Works
+````mermaid
+sequenceDiagram
+    Developer->>GitHub: Create PR with .sol files
+    GitHub->>AuditForge: Webhook: PR opened
+    AuditForge->>GitHub: Fetch changed files
+    AuditForge->>AuditForge: Run security audit
+    AuditForge->>GitHub: Post review comment
+    GitHub->>Developer: Notification
+    Developer->>GitHub: Review findings
+    Developer->>GitHub: Push fixes
+    GitHub->>AuditForge: Webhook: PR updated
+    AuditForge->>AuditForge: Re-audit
+    AuditForge->>GitHub: Update comment
+````
+
+#### Example PR Comment
+````markdown
+## AuditForge Security Audit
+
+**Risk Level:** 🔴 HIGH RISK
+
+**Issues Found:** 3 Critical, 5 High, 2 Medium
 
 ---
 
-**Built with ❤️ using ADK-TS**
+### ⚠️ Critical Issues
 
-*Making Web3 security accessible to everyone*
+#### 1. Reentrancy Vulnerability
+**File:** `contracts/Vault.sol`
+**Lines:** 45-52
+**Function:** `withdraw(uint256 amount)`
+
+**Description:** External call before state update allows reentrancy attack.
+
+**Recommendation:**
+```solidity
+// Move state update before external call
+balances[msg.sender] -= amount;
+(bool success,) = msg.sender.call{value: amount}("");
+require(success);
+```
+
+[View Details](link) | [Learn More](link)
+
+---
+
+#### 2. Access Control Missing
+**File:** `contracts/Vault.sol`
+**Lines:** 78-82
+**Function:** `setOwner(address newOwner)`
+
+**Description:** Anyone can call this function and change the contract owner.
+
+**Recommendation:**
+```solidity
+function setOwner(address newOwner) public onlyOwner {
+    require(newOwner != address(0));
+    owner = newOwner;
+}
+```
+
+---
+
+### Summary
+
+- **Action Required:** Fix 3 critical issues before merging
+- **Full Report:** [View Complete Audit](link)
+- **Gas Savings:** 5 optimization opportunities found
+
+---
+
+*Powered by AuditForge built with love for ADK-TS hackathon*
+````
+
+---
