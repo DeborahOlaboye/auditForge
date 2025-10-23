@@ -45,18 +45,14 @@ export default function Landing() {
             <div className="hero-cta-group">
               <Link to="/auditor">
                 <button className="btn-primary btn-large">
-                  <span>🔍 Audit Your Contract</span>
+                  <span>Audit Your Contract</span>
                 </button>
               </Link>
               <button className="btn-secondary btn-large">
-                <span>▶ Watch Demo</span>
+                <span>Watch Demo</span>
               </button>
             </div>
             <div className="trust-indicators">
-              <div className="trust-item">
-                <span className="trust-icon">✓</span>
-                <span>20+ Vulnerabilities Detected</span>
-              </div>
               <div className="trust-item">
                 <span className="trust-icon">🛡️</span>
                 <span>Built with ADK-TS</span>
@@ -92,12 +88,7 @@ export default function Landing() {
             <div className="stat-number">$3B+</div>
             <div className="stat-label">Lost to exploits in 2024</div>
           </div>
-          <div className="stat-divider"></div>
-          <div className="stat-item">
-            <div className="stat-icon">🔍</div>
-            <div className="stat-number forge-color">20+</div>
-            <div className="stat-label">Vulnerability types detected</div>
-          </div>
+        
           <div className="stat-divider"></div>
           <div className="stat-item">
             <div className="stat-icon">⚡</div>

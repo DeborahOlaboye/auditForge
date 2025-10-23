@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: adhs-backend
+    env: node
+    rootDir: backend
+    plan: free
+    autoDeploy: true
+    buildCommand: npm install --no-audit --no-fund && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "20"
+      # LLM config - set in Render Dashboard or via blueprint sync
+      - key: LLM_PROVIDER
+        sync: false
+      - key: LLM_MODEL
+        sync: false
+      # API keys (set securely in Render Dashboard)
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      # Skip downloading Chromium since Puppeteer isn't needed at build time
+      - key: PUPPETEER_SKIP_DOWNLOAD
+        value: "true"
+      # Rate limiting defaults (optional overrides)
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: "10"
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "60000"
