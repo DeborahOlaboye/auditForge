@@ -78,7 +78,6 @@ export default function Auditor() {
       <nav className="auditor-navbar">
         <div className="nav-container">
           <Link to="/" className="nav-logo">
-            <span className="logo-icon">🔨</span>
             <span className="logo-text">AuditForge</span>
           </Link>
           <div className="page-title">
@@ -112,7 +111,6 @@ export default function Auditor() {
             </div>
             <div className="editor-header-right">
               <button className="icon-btn" onClick={onLoadSample} title="Load Sample">
-                <span>🧪</span>
               </button>
             </div>
           </div>
@@ -125,7 +123,7 @@ export default function Auditor() {
                 <p>Or upload a .sol file, or try a sample contract</p>
                 <div className="placeholder-actions">
                   <button className="btn-secondary" onClick={onLoadSample}>
-                    🧪 Try Sample Contract
+                     Try Sample Contract
                   </button>
                 </div>
               </div>
@@ -149,7 +147,7 @@ export default function Auditor() {
                   </button>
                 </div>
                 <button className="btn-audit" onClick={onRunAudit} disabled={!code}>
-                  <span className="btn-icon">🔨</span>
+                 
                   <span>Run Security Audit</span>
                 </button>
                 <div className="footer-right">
@@ -176,7 +174,7 @@ export default function Auditor() {
         <div className="results-panel">
           {!report && !error && !loading && (
             <div className="results-empty">
-              <div className="empty-icon">🛡️</div>
+            
               <h3>Ready to Audit</h3>
               <p>Paste your contract code and click 'Run Security Audit' to begin analysis</p>
               <div className="empty-visual">

@@ -1,6 +1,6 @@
 import type { AuditReport } from '../types';
 
-const API_BASE = '/api';
+const API_BASE = (import.meta as any).env.VITE_API_BASE || '/api';
 
 export async function health(): Promise<any> {
   const res = await fetch(`${API_BASE}/health`);
